@@ -57,7 +57,7 @@ if (os.type() === 'Windows_NT') {
     // 设置 Linux 下的路径
     globalPackagePath = path.join(globalPath, 'sfnct');
 } else {
-    console.warn(`当前系统为${os.type()},该系统并不是常见系统，未经测试，如果出现错误请反馈到 github`)
+    console.warn(`当前系统为${os.type()},该系统并不是常见系统，未经测试，如果出现错误请反馈到 github:https://github.com/Dr-SummerFlower/sfnct`)
 }
 
 const templateDir = path.join(globalPackagePath, 'template');
@@ -77,4 +77,5 @@ if (env.create) {
     listTemplates(templateDir);
 } else {
     console.warn('请输入正确的命令');
+    program.help();
 }
