@@ -6,9 +6,6 @@
     <a href="https://github.com/Dr-SummerFlower/sfnct/blob/main/LICENSE">
         <img src="https://img.shields.io/github/license/Dr-SummerFlower/sfnct" alt="GitHub license">
     </a>
-    <a href="https://www.npmjs.com/package/sfnct">
-        <img src="https://img.shields.io/npm/v/sfnct.svg" alt="npm version">
-    </a>
     <a href="https://github.com/tj/commander.js">
         <img src="https://img.shields.io/badge/commander.js-11.0.0-blue.svg" alt="Commander.js">
     </a>
@@ -47,3 +44,43 @@ npm install -g sfnct
 ```bash
 使用命令`sfnct -h`查看帮助信息
 ```
+
+
+<div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #e1e4e8; padding: 16px; border-radius: 5px; margin-bottom: 20px;">
+  <div style="display: flex; align-items: center;">
+    <div style="flex: 1;">
+      <h3 style="display: flex; align-items: center;">
+        <img src="https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png" alt="npm Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+        npm - sfnct  
+      </h3>
+      <p>查看我的项目在npm上的仓库。</p>
+      <a href="https://www.npmjs.com/package/sfnct" style="display: inline-block; padding: 10px 20px; background-color: #0366d6; color: #fff; text-decoration: none; border-radius: 3px;">点击这里</a>
+    </div>
+  </div> 
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #e1e4e8; padding: 16px; border-radius: 5px; margin-bottom: 20px;">
+  <div style="display: flex; align-items: center;">
+    <div style="flex: 1;">
+      <h3 style="display: flex; align-items: center;">
+        <img src="https://github.githubassets.com/favicons/favicon-dark.png" alt="GitHub Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+        GitHub - sfnct  
+      </h3>
+      <p>查看我的项目在GitHub上的仓库。</p>
+      <a href="https://github.com/Dr-SummerFlower/sfnct" style="display: inline-block; padding: 10px 20px; background-color: #0366d6; color: #fff; text-decoration: none; border-radius: 3px;">点击这里</a>
+    </div>
+  </div> 
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #e1e4e8; padding: 16px; border-radius: 5px; margin-bottom: 20px;">
+  <div style="display: flex; align-items: center;">
+    <div style="flex: 1;">
+      <h3 style="display: flex; align-items: center;">
+        <img src="https://gitee.com/assets/favicon.ico" alt="Gitee Logo" style="width: 24px; height: 24px; margin-right: 10px;">
+        Gitee - sfnct
+      </h3>
+      <p>查看我的项目在Gitee上的仓库。</p>
+      <a href="https://gitee.com/Dr_Summerflower/sfnct" style="display: inline-block; padding: 10px 20px; background-color: #0366d6; color: #fff; text-decoration: none; border-radius: 3px;">点击这里</a>
+    </div>
+  </div>
+</div>

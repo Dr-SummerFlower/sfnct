@@ -9,11 +9,11 @@ import fs from 'fs/promises';
 export default async (templateDir) => {
     try {
         const templates = await fs.readdir(templateDir);
-        console.log('Available templates:');
+        console.info('可用模板:');
         templates.forEach((template) => {
-            console.log(`- ${template}`);
+            console.info(`- ${template}`);
         });
     } catch (err) {
-        console.error('Error listing templates:', err);
+        console.error('获取模版列表出错:', err);
     }
 };
