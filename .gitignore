@@ -4,3 +4,4 @@
 node_modules
 .eslintrc.cjs
 .npmignore
+package-lock.json

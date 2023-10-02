@@ -47,17 +47,18 @@ const env = program.opts();
 // 根据不同操作系统设置全局包路径
 const globalPath = execSync('npm root -g').toString().trim();
 let globalPackagePath;
-if (os.type() === 'Windows_NT') {
+const osType = os.type();
+if (osType === 'Windows_NT') {
     // 设置 Windows 下的路径
     globalPackagePath = path.join(globalPath, 'sfnct');
-} else if (os.type() === 'Darwin') {
+} else if (osType === 'Darwin') {
     // 设置 macOS 下的路径
     globalPackagePath = path.join(globalPath, 'sfnct');
-} else if (os.type() === 'Linux') {
+} else if (osType === 'Linux') {
     // 设置 Linux 下的路径
     globalPackagePath = path.join(globalPath, 'sfnct');
 } else {
-    console.warn(`当前系统为${os.type()},该系统并不是常见系统，未经测试，如果出现错误请反馈到 github:https://github.com/Dr-SummerFlower/sfnct`)
+    console.warn(`当前系统为${osType},该系统并不是常见系统，未经测试，如果出现错误请反馈到 github:https://github.com/Dr-SummerFlower/sfnct`)
 }
 
 const templateDir = path.join(globalPackagePath, 'template');
