@@ -1,7 +1,7 @@
 {
     "name": "sfnct",
     "type": "module",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Node Create Tools",
     "main": "index.js",
     "bin": {
@@ -18,10 +18,17 @@
         "url": "^0.11.3"
     },
     "keywords": [
-        "nct",
+        "sfnct",
         "Node Create Tools",
         "创建工具",
         "express骨架模版",
         "Koa骨架模版"
-    ]
+    ],
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.22.15",
+        "eslint": "^8.50.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "prettier": "^3.0.3"
+    }
 }
