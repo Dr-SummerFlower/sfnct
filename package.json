@@ -1,7 +1,7 @@
 {
     "name": "sfnct",
     "type": "module",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Node Create Tools",
     "main": "index.js",
     "bin": {
