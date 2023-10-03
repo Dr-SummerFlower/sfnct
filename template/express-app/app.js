@@ -15,19 +15,19 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.engine('html', expressArtTemplate);
-app.set('views',path.join(__dirname, 'view'));
+app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'html');
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('index', {
-        message: '你好， Express!'
-    });
+	res.render('index', {
+		message: '你好， Express!',
+	});
 });
 
-app.use('/router', router)
+app.use('/router', router);
 
 app.listen(port, ip, () => {
-    console.log(`服务器运行在端口 ${port}`);
+	console.log(`服务器运行在端口 ${port}`);
 });

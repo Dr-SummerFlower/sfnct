@@ -13,13 +13,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.json({
-        message:'你好, Express!'
-    });
+	res.json({
+		message: '你好, Express!',
+	});
 });
 
-app.use('/router', router)
+app.use('/router', router);
 
 app.listen(port, ip, () => {
-    console.log(`服务器运行在端口 ${port}`);
+	console.log(`服务器运行在端口 ${port}`);
 });
