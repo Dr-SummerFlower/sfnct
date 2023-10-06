@@ -9,13 +9,7 @@ import { format, inspect } from 'util';
 
 class Logger {
     constructor(config = {}) {
-        const {
-            level = 'info',
-            logPath = 'log',
-            maxSize = 5242880, // 5MB
-            maxFiles = 5,
-            tailable = true,
-        } = config;
+        const { level = 'info' } = config;
 
         this.logger = winston.createLogger({
             level,
@@ -27,30 +21,7 @@ class Logger {
                         `[${info.timestamp}]-[${info.level}]: ${info.message}`
                 )
             ),
-            transports: [
-                new winston.transports.File({
-                    level: 'info',
-                    filename: `${logPath}/info.log`,
-                    maxsize: maxSize,
-                    maxFiles,
-                    tailable,
-                }),
-                new winston.transports.File({
-                    level: 'warn',
-                    filename: `${logPath}/warn.log`,
-                    maxsize: maxSize,
-                    maxFiles,
-                    tailable,
-                }),
-                new winston.transports.File({
-                    level: 'error',
-                    filename: `${logPath}/error.log`,
-                    maxsize: maxSize,
-                    maxFiles,
-                    tailable,
-                }),
-                new winston.transports.Console(),
-            ],
+            transports: [new winston.transports.Console()],
         });
     }
 
