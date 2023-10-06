@@ -19,7 +19,7 @@
 
 <p>用来快速创建代码模版。</p>
 
-#### 安装
+### 安装
 
 请使用`npm`或`yarn`全局安装此包
 
@@ -27,48 +27,29 @@
 npm install -g sfnct
 ```
 
-#### 创建命令
+### 使用
 
-1. create命令----创建一个新的模版，需要配合其他参数执行
-
-```bash
-sfnct -c
-```
-
-| 参数                   | 说明     |
-|:---------------------|:-------|
-| `sfnct -c -t <name>` | 创建应用模版 |
-| `sfnct -c -f <name>` | 创建文件模版 |
-
-2. list命令----列出所有模版
+先在项目目录中运行
 
 ```bash
-sfnct -l
+sfnct
 ```
 
-3. OS命令----列出当前系统信息
+然后根据需要选择对应的选项
 
-```bash
-sfnct -o
-```
-
-4. help命令----查看帮助信息
-
-```bash
-sfnct -h
-```
+### 发布
 
 <div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #e1e4e8; padding: 16px; border-radius: 5px; margin-bottom: 20px;">
   <div style="display: flex; align-items: center;">
     <div style="flex: 1;">
       <h3 style="display: flex; align-items: center;">
         <img src="https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png" alt="npm Logo" style="width: 24px; height: 24px; margin-right: 10px;">
-        npm - sfnct  
+        npm - sfnct
       </h3>
       <p>查看我的项目在npm上的仓库。</p>
       <a href="https://www.npmjs.com/package/sfnct" style="display: inline-block; padding: 10px 20px; background-color: #0366d6; color: #fff; text-decoration: none; border-radius: 3px;">点击这里</a>
     </div>
-  </div> 
+  </div>
 </div>
 
 <div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #e1e4e8; padding: 16px; border-radius: 5px; margin-bottom: 20px;">
@@ -76,12 +57,12 @@ sfnct -h
     <div style="flex: 1;">
       <h3 style="display: flex; align-items: center;">
         <img src="https://github.githubassets.com/favicons/favicon-dark.png" alt="GitHub Logo" style="width: 24px; height: 24px; margin-right: 10px;">
-        GitHub - sfnct  
+        GitHub - sfnct
       </h3>
       <p>查看我的项目在GitHub上的仓库。</p>
       <a href="https://github.com/Dr-SummerFlower/sfnct" style="display: inline-block; padding: 10px 20px; background-color: #0366d6; color: #fff; text-decoration: none; border-radius: 3px;">点击这里</a>
     </div>
-  </div> 
+  </div>
 </div>
 
 <div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #e1e4e8; padding: 16px; border-radius: 5px; margin-bottom: 20px;">
