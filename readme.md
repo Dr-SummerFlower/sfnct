@@ -6,8 +6,8 @@
         <a href="https://github.com/Dr-SummerFlower/sfnct/blob/main/LICENSE">
             <img src="https://img.shields.io/github/license/Dr-SummerFlower/sfnct" alt="GitHub license">
         </a>
-        <a href="https://github.com/tj/commander.js">
-            <img src="https://img.shields.io/badge/commander.js-11.0.0-blue.svg" alt="Commander.js">
+        <a href="https://github.com/tj/inquirer.js">
+            <img src="https://img.shields.io/badge/inquirer.js-9.2.11-blue.svg" alt="Commander.js">
         </a>
         <a href="https://nodejs.org/zh-cn/">
             <img src="https://img.shields.io/badge/node-18.18.0-brightgreen.svg" alt="Node.js version">
