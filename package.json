@@ -1,34 +1,31 @@
 {
-    "name": "sfnct",
-    "type": "module",
-    "version": "1.0.9",
-    "description": "Node Create Tools",
-    "main": "index.js",
-    "bin": {
-        "sfnct": "./index.js"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Dr-SummerFlower",
-    "license": "ISC",
-    "dependencies": {
-        "child_process": "^1.0.2",
-        "commander": "^11.0.0",
-        "url": "^0.11.3"
-    },
-    "keywords": [
-        "sfnct",
-        "Node Create Tools",
-        "创建工具",
-        "express骨架模版",
-        "Koa骨架模版"
-    ],
-    "devDependencies": {
-        "@babel/eslint-parser": "^7.22.15",
-        "eslint": "^8.50.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-prettier": "^5.0.0",
-        "prettier": "^3.0.3"
-    }
+  "name": "sfnct",
+  "type": "module",
+  "version": "1.1.0",
+  "description": "Node Create Tools",
+  "main": "index.js",
+  "bin": {
+    "sfnct": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dr-SummerFlower",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "inquirer": "^9.2.11",
+    "url": "^0.11.3",
+    "winston": "^3.10.0"
+  },
+  "keywords": [
+    "sfnct",
+    "Node Create Tools",
+    "创建工具",
+    "express骨架模版",
+    "Koa骨架模版"
+  ],
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  }
 }

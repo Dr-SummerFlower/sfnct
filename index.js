@@ -2,87 +2,132 @@
 
 /**
  * @File: index.js
- * @author: 夏花
- * @time: 2023-09-27
+ * @Author: 夏花
+ * @Date: 2023-09-27
  */
 
-import { program } from 'commander';
+// 核心模块
 import path from 'path';
-import os from 'os';
-import { createFile, createTemplate } from './utils/create/template.js';
-import listTemplates from './utils/list.js';
+import fs from 'fs/promises';
+// 第三方模块
+import inquirer from 'inquirer';
+import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-import { readFileSync } from 'fs';
-
-const packageJson = JSON.parse(readFileSync('./package.json'));
+// 自定义模块
+import template from './utils/create/template.js';
+import listTemplate from './utils/list.js';
+import system from './utils/system.js';
+import Logger from './utils/logRecord.js';
 
 /**
- * 显示系统信息，包括平台、主机名、系统版本、当前用户、用户主目录、字节顺序。
+ * 获取当前文件的路径和目录名
  */
-const systemInformation = () => {
-	const system = {
-		平台: os.platform(),
-		主机名: os.hostname(),
-		系统版本: os.release(),
-		当前用户: os.userInfo().username,
-		用户主目录: os.homedir(),
-		字节顺序: os.endianness(),
-	};
-	console.info(system);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const packageJsonPath = path.join(__dirname, 'package.json');
+const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
+
+/**
+ * 主函数，处理用户输入和操作
+ */
+const main = async () => {
+    // 根据不同操作系统设置全局包路径
+    const globalPath = execSync('npm root -g').toString().trim();
+    let globalPackagePath;
+    const osType = system.osType();
+    switch (osType) {
+        case 'Windows_NT':
+        case 'Darwin':
+        case 'Linux':
+            globalPackagePath = path.join(globalPath, 'sfnct');
+            break;
+        default:
+            const msg = `当前系统为${osType}, 该系统并不是常见系统，未经测试，如果出现错误请反馈到 github:https://github.com/Dr-SummerFlower/sfnct`;
+            Logger.warn(msg);
+            globalPackagePath = path.join(globalPath, 'sfnct');
+            break;
+    }
+
+    const templateDir = path.join(globalPackagePath, 'template');
+    const customPath = process.cwd();
+
+    const answers = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'action',
+            message: '请选择一个操作:',
+            choices: [
+                '列出可用模板',
+                '创建模板',
+                '安装依赖',
+                '查看版本号',
+                '查看系统信息',
+                '退出',
+            ],
+        },
+    ]);
+    if (answers.action === '列出可用模板') {
+        listTemplate(templateDir);
+    } else if (answers.action === '创建模板') {
+        const templates = await fs.readdir(templateDir);
+        if (templates.length === 0) {
+            Logger.warn('模板目录为空，请添加模板后再试。');
+            return;
+        }
+        const templateAnswer = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'templateName',
+                message: '请选择要创建的模板:',
+                choices: templates,
+                default: 'express-app',
+            },
+        ]);
+        try {
+            await template.createTemplateOrFile(
+                templateAnswer.templateName,
+                templateDir,
+                customPath
+            );
+            Logger.info('模板创建成功！');
+            const answerInstall = await inquirer.prompt([
+                {
+                    type: 'confirm',
+                    name: 'installDependencies',
+                    message: '是否安装依赖？',
+                },
+            ]);
+
+            if (answerInstall.installDependencies) {
+                try {
+                    template.installDependencies(customPath);
+                    Logger.info('依赖安装成功！');
+                } catch (err) {
+                    Logger.error('安装依赖时出错:', err);
+                }
+            } else {
+                Logger.info('跳过依赖安装。');
+            }
+        } catch (err) {
+            Logger.error('创建模板时出错:', err);
+        }
+    } else if (answers.action === '安装依赖') {
+        try {
+            template.installDependencies(customPath);
+            Logger.info('依赖安装成功！');
+        } catch (err) {
+            Logger.error('安装依赖时出错:', err);
+        }
+    } else if (answers.action === '查看版本号') {
+        Logger.info(packageJson.version);
+    } else if (answers.action === '查看系统信息') {
+        const systemInfo = system.systemInformation();
+        Logger.info(systemInfo);
+    } else if (answers.action === '退出') {
+        Logger.info('退出应用。');
+    } else {
+        Logger.warn('未知操作，请重试！');
+    }
 };
 
-program
-	.version(packageJson.version, '-v, --version', '查看版本号')
-	.helpOption('-h, --help', '查看帮助信息')
-	.option('-c, --create', '创建一个新的模版，需要配合其他参数执行')
-	.option('-t, --template <name>', '创建一个新模板,需要配合 -c 命令使用')
-	.option('-f, --file <name>', '创建一个新文件,需要配合 -c 命令使用')
-	.option('-l, --list', '列出所有可用模版')
-	.option('-o, --OS', '查看系统信息')
-	.parse(process.argv);
-
-const env = program.opts();
-
-// 根据不同操作系统设置全局包路径
-const globalPath = execSync('npm root -g').toString().trim();
-let globalPackagePath;
-const osType = os.type();
-if (osType === 'Windows_NT') {
-	// 设置 Windows 下的路径
-	globalPackagePath = path.join(globalPath, 'sfnct');
-} else if (osType === 'Darwin') {
-	// 设置 macOS 下的路径
-	globalPackagePath = path.join(globalPath, 'sfnct');
-} else if (osType === 'Linux') {
-	// 设置 Linux 下的路径
-	globalPackagePath = path.join(globalPath, 'sfnct');
-} else {
-	// eslint和prettier规则不匹配，字符串过长导致换行，
-	// 换行导致末尾自动添加逗号，导致eslint报错
-	const msg = `当前系统为${osType},该系统并不是常见系统，未经测试，如果出现错误请反馈到 github:https://github.com/Dr-SummerFlower/sfnct`;
-	console.warn(msg);
-}
-
-const templateDir = path.join(globalPackagePath, 'template');
-const customPath = process.cwd();
-
-if (env.create) {
-	if (env.template) {
-		const name = env.template;
-		createTemplate(name, templateDir, customPath).then((r) => {
-			return r;
-		});
-	} else if (env.file) {
-		const name = env.file;
-		createFile(name, templateDir, customPath).then((r) => {
-			return r;
-		});
-	}
-} else if (env.OS) {
-	systemInformation();
-} else if (env.list) {
-	listTemplates(templateDir);
-} else {
-	console.warn('请输入正确的命令');
-	program.help();
-}
+main().catch((err) => Logger.error(err));

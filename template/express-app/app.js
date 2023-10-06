@@ -21,13 +21,13 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-	res.render('index', {
-		message: '你好， Express!',
-	});
+    res.render('index', {
+        message: '你好， Express!',
+    });
 });
 
 app.use('/router', router);
 
 app.listen(port, ip, () => {
-	console.log(`服务器运行在端口 ${port}`);
+    console.log(`服务器运行在端口 ${port}`);
 });

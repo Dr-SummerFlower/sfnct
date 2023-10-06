@@ -1,9 +1,10 @@
 .vscode
 .idea
-
 node_modules
+test
+
 .npmignore
-package-lock.json
 .eslintrc
 .prettierrc
 .editorconfig
+package-lock.json
