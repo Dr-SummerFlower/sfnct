@@ -119,7 +119,7 @@ const main = async () => {
             Logger.error('安装依赖时出错:', err);
         }
     } else if (answers.action === '查看版本号') {
-        Logger.info(packageJson.version);
+        Logger.info('sfnct-' + packageJson.version);
     } else if (answers.action === '查看系统信息') {
         const systemInfo = system.systemInformation();
         Logger.info(systemInfo);
